@@ -1,35 +1,28 @@
 
 
-use std::io; // to obtain user input/output we need input/output standard library 
+use std::io;  
+use rand::Rng;
 
 
+fn main() { 
 
-fn main() { // fn declares a new function
-
-    // println! is a macro that prints a string to the screen 
+     
     println!("Guess the number!"); 
+
+
+    let secret_number = rand::thread_rng().gen_range(1..=100);
+
+    println!("The secret number is: {secret_number}");
     println!("Please input your guess.");
 
-    // `let` keyword allows us to create a variable 
-    // variables are immutable by default (the value wont change)
-    // `mut` keyword allows us to make a variable mutable
-    // `::new` is an associated function of String type, this function creates a new, empty string
-    let mut guess = String::new();
-
+    let mut guess guess = String::new();
     
-    // if we had not imported `use std::io` we could still use std::io::stdin
-    // .read_line() handles/gets the input from the user
-    // passing `&mut guess` by reference allows the code to access the data without copying data
-    // read_line() returns a Result value. Result's variants are `Ok` and `Err`
-    // `Ok` indicates successfully generated value
-    // `Err` indicates operation failed
-    // if the read_line() Result returns `Ok` value, expect() will return value `Ok` so you can use
     io::stdin()
         .read_line(&mut guess)
         .expect("Failed to read line");
 
-    // the {} set of curly brackets is a placeholder
-    // think of it as a crabs princers that holds a value in place
-    // when printing the value, the variable name can go inside the {} curly brackets
+    
+    
+    
     println!("You guessed: {guess}");
 }
