@@ -25,7 +25,7 @@ fn main() { // fn declares a new function
     // `Err` indicates operation failed
     // if the read_line() Result returns `Ok` value, expect() will return value `Ok` so you can use
     io::stdin()
-        .read_line(&mut guess);
+        .read_line(&mut guess)
         .expect("Failed to read line");
 
     // the {} set of curly brackets is a placeholder
