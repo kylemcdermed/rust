@@ -13,7 +13,7 @@ fn main() {
     // gen_range method takes a range expression as argument and generates a random number in range
     // the range expression takes the form (start..=end) , inclusive on lower/upper bounds
     // so we specify 1..=100 to request a number between 1 and 100
-    let secret_number = rand::thread_rng().gen_range(1..=100);
+    let secret_number = rand::rng().random_range(1..=100);
 
     println!("The secret number is: {secret_number}");
     println!("Please input your guess.");
