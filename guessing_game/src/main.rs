@@ -5,7 +5,7 @@ use rand::Rng;
 fn main() {
     let secret_number = rand::rng().random_range(1..=100);
 
-    println!("The secret number is: {secret_number}");
+    // println!("The secret number is: {secret_number}");
 
     loop {
         println!("Guess the number!");
