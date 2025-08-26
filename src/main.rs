@@ -1,18 +1,12 @@
 
-use std::io;
+
 
 fn main() {
-    println!("Guess the number!");
-    println!("Please input your guess.");
-
-    // let --> creates a variable
-    // mut --> allows the 'let' variable to be mutable
-    // variables are immuteable by default
-    let mut guess = String::new();
-
-    io::stdin()
-        .read_line(&mut guess)
-        .expect("Failed to read line");
-    
-    println!("You guessed: {guess}");
+    let x = 5;
+    let x = x + 1;
+    {
+        let x = x * 2;
+        println!("The value os x in the inner scope is: {x}");
+    }
+    println!("The value of x is: {x}")
 }
