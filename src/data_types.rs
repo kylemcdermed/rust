@@ -116,3 +116,17 @@
 // rust has a fixed length.
 //
 // we write the values in an array as a comma-seperated list inside square brackets
+//
+// arrays are useful when you want your data allocated on the stack, the same as the other types we
+// have seen.
+//
+// rather than the heap, or when you want to ensure you always have a fixed number of elements. an
+// array isnt as flexible as the vector type.
+//
+// a vector is a similar collection type provided by the standard lobrary that IS ALLOWED to grow
+// or shrink in size because its contents live on the heap. if youre unsure whether to use an array
+// or a vector, chances are you should use a vector
+//
+// however, arrays are more useful when you know the number of elements will not need to change.
+// for exmaple lets say you were using the names of the month in a program, you would probably use
+// an array rather than a vector becasue you know it will always contain 12 elements
