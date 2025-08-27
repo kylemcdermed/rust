@@ -107,3 +107,12 @@
 // the tuple without any values has a special name, unit. this value and its corresponding type are
 // both written () and represent an empty value or an empty return type. Expressions implicitly
 // return the unit value if they dont return any other value
+//
+//
+// The Array Type --
+//
+// Another way to have a collection of multiple values is with an arra. unlike a tuple, every
+// element of an array must hav ethe same type. un like arrays in some other language, arrays in
+// rust has a fixed length.
+//
+// we write the values in an array as a comma-seperated list inside square brackets
