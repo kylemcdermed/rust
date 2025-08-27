@@ -133,3 +133,20 @@
 //
 // you write an arrays type using square brackets with the type of each element, a semicolon and
 // then the number of elements in the array
+//
+// here, i32 is the type of each element, after the semi colon, the number 5 indicates teh array
+// contains 5 elements
+//
+// you can also initialize an array to contain the same value for each element by specifying the
+// initial value, followed by a semi colon, then the length of the array in square brackets as
+// shown here:
+//
+// let a = [3; 5];
+//
+// the array named a will contain 5 elements that will all be set to the value 3 initially. this is
+// the same as writing let a = [3,3,3,3,3]; but in a more concise way
+//
+// Accessing Array Elements --
+//
+// an array is a single chunk of memory of known, fixed size that can be allocated on the stack.
+// you can access elements of an array using indexing like this 
