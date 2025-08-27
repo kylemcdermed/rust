@@ -88,3 +88,7 @@
 //
 // We create a tuple by writing a comma-seperated list of values inside parentheses. Each position
 // in the tuple has a type, and types of different values in the tuple dont have to be the same
+//
+// the variable tup binds to the entire tuple because tuple is considered a single compound
+// element. To get the individual values of a tuple, we can use pattern matching to destructure a
+// tuple value
