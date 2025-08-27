@@ -59,3 +59,9 @@
 // addition, subtraction, multiplication, division, remainder
 //
 // Integer division truncates toward zero to the nearest integer.
+//
+//
+// The Boolean Type --
+//
+// In most other languages, Boolean type in Rust has two possible values: true and false
+// Booleans are one byte in size. Boolean type in Rust is specified using bool 
