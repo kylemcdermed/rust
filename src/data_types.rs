@@ -53,3 +53,9 @@
 // The default type is f64
 //
 // 
+// Numeric Operations --
+//
+// Rust supports basic mathematical operations for all number types:
+// addition, subtraction, multiplication, division, remainder
+//
+// Integer division truncates toward zero to the nearest integer.
