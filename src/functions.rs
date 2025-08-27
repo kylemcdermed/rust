@@ -52,3 +52,41 @@
 //
 // when defining multiple parameters, separate the parameter declarations with commas, like this
 //
+//
+// this example creates a function named print_labeled_measurement with two parameters. the first
+// parameter is named value and is an i32, the second is named unit_label and it type char. 
+//
+// the function then prints text containing both the value and the unit_label
+//
+// because we called the function with 5 as the value and 'h' as the value for unit_label, the
+// program output contains those values 
+//
+//
+// STATEMENTS AND EXPRESSIONS
+//
+// function bodies are made up of a series of statements optionally ending in an expression. 
+//
+// so far, the functions weve covered havent included an ending expression, but you have seen an
+// expressoin as part of a statement 
+//
+// because Rust is an expression based language, this is an important distinction to understand.
+// other languages dont have the same distinctions so lets look at what statements and expressions
+// are and how their differences affect the bodies of the functions
+//
+// -- statements are instructions that perform some action and do not return a value
+// -- expression evaluate to a resultant value 
+//
+// lets look at some examples
+//
+// weve actually already used statements and expressoin. creating a variable and assinging a value
+// to it with the `let` keyword is a statement. 
+//
+// let y = 6; // is a statement 
+//
+//
+// function definitions are also statements; the entire preceding example is a statement in itself
+//
+// statements do not reutrn values. therefore, you cant assign a `let` statement to another
+// variable, as the following code tries to dol youll get an erorr 
+//
+//
