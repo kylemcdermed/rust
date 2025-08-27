@@ -150,3 +150,14 @@
 //
 // an array is a single chunk of memory of known, fixed size that can be allocated on the stack.
 // you can access elements of an array using indexing like this 
+//
+// in this example the variable named first will get the value of 1 because that is the value at
+// the index [0] in the array. the variable named second will get the value 2 from the index [1] in
+// the array
+//
+//
+// Invalid Array Element Access --
+//
+// lets see what happens if you try to access an element of an array that is past the end of the
+// array, say you run this code similar to guessing game code in chapter 2, to get an array index
+// from the user
