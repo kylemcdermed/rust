@@ -4,7 +4,5 @@
 
 
 fn main() {
-    let c = 'z';
-    let z: char = 'Z'; // with explicit type annotation
-    let heart_eyed_cat = '😻';
+    let tup: (i32, f64, u8) = (500, 6.4, 1);
 }
