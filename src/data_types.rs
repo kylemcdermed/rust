@@ -161,3 +161,21 @@
 // lets see what happens if you try to access an element of an array that is past the end of the
 // array, say you run this code similar to guessing game code in chapter 2, to get an array index
 // from the user
+//
+// this code compiles successfully. if you run this code using `cargo run` and enter 0,1,2,3,4 the
+// program will print out th ecorresponding value at that index in the array if you enter a number
+// past the end of the array such as 10, youll see output like this:
+// "index out of bounds: len is 5 but the index is 10"
+//
+// the program resulted in a runtime erorr at the point of using an invalud value in the indexing
+// operation.
+//
+// the program exited with an error message and did not excute the final println! statement.
+//
+// when you attemp tto access an element using indexing, Rust will check that the index youve
+// specified is less than the array length. if the index is greater than or equal to the length,
+// Rust will panic. this check has to happen at runtime, especially in this case, because the
+// compiler cant possibly know what the value a user will enter whne they run the code later.
+//
+// this is an example of Rust's memory safety principles in action. Rust protexts you against any
+// kind of error by immediately exiting instead of allowing the memory access and continuing.
