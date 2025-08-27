@@ -4,5 +4,5 @@
 
 
 fn main() {
-    let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    let a = [i32; 5] = [1,2,3,4,5]
 }
