@@ -64,4 +64,8 @@
 // The Boolean Type --
 //
 // In most other languages, Boolean type in Rust has two possible values: true and false
-// Booleans are one byte in size. Boolean type in Rust is specified using bool 
+// Booleans are one byte in size. Boolean type in Rust is specified using bool
+//
+// The Character Type 
+//
+// Rusts char type is the most primitive alphabetic type. 
