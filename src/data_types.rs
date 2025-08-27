@@ -130,3 +130,6 @@
 // however, arrays are more useful when you know the number of elements will not need to change.
 // for exmaple lets say you were using the names of the month in a program, you would probably use
 // an array rather than a vector becasue you know it will always contain 12 elements
+//
+// you write an arrays type using square brackets with the type of each element, a semicolon and
+// then the number of elements in the array
