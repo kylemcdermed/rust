@@ -90,3 +90,19 @@
 // variable, as the following code tries to dol youll get an erorr 
 //
 //
+// the `let y = 6` statement does not return a value, so there isnt anything for x to bind to. 
+//
+// this is differnet from what happens in other languages such as C, Ruby, where the assignment
+// returns the value of the assignment. in those languages, you can write x = y = 6 and have both x
+// and y have the value 6; that is not the case in Rust.
+//
+// expressions evaluate to a value and make up most of the rest of the code thar youll write in
+// Rust.
+//
+// consider a math operation such as 5+6, which is an expression that evaulates to the value 11.
+// expressions can be part of statements, the 6 in the statement let y = 6; is an expressoin that
+// evaulates to the value of 6. calling a function is an expression, calling a macro is an
+// expression. a new scope block created with curly brackets is an expression
+//
+//
+//
