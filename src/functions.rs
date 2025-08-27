@@ -22,3 +22,20 @@
 // that theyre defined somewhere in a scope that can be seen by th caller
 //
 // were going to create a new binary project called functions to explore further
+//
+// the lines execute in the order in which they appear in the main function, first the "hello
+// world" message prints and then another_function is called and is printed
+//
+//
+// PARAMETERS --
+//
+// we can define functions to have parameters, which are special variables that are part of a
+// functions signature.
+//
+// when a function has parameters, you can provide it with concrete values for those parameters.
+// technically, the concrete values are called arguments, but in casual conversation, people tend
+// to use the words parameters and arguments interchangeable for either the variables in a function
+// definition or the concrete values passed in when you call a function
+//
+// lets add another parameter inside our function
+//
