@@ -100,3 +100,10 @@
 //
 // we can also access a tuple element directly using a period (.) followed by the index of the
 // value we want to access
+//
+// this program creates the tuple x and then accesses each element of the tuple using their
+// respective indices. as with most programming languages, the first index in a tuple is 0.
+//
+// the tuple without any values has a special name, unit. this value and its corresponding type are
+// both written () and represent an empty value or an empty return type. Expressions implicitly
+// return the unit value if they dont return any other value
