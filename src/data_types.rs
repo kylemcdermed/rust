@@ -68,4 +68,23 @@
 //
 // The Character Type 
 //
-// Rusts char type is the most primitive alphabetic type. 
+// Rusts char type is the most primitive alphabetic type.
+//
+// We specify char literals with single quotes, as opposed to string literals which use double
+// quotes
+//
+// Rust's char type is four bytes in size
+//
+//
+// Compound Types --
+//
+// Compound types can group multiple values into one type. Rust has two primitive compound types:
+// tuples and arrays
+//
+// The Tuple Type --
+//
+// A tuple is a general way of group together a number of values with a variety of types into one
+// compound type. Tuples have a fixed length: once declared, they cannot grow or shrink in size
+//
+// We create a tuple by writing a comma-seperated list of values inside parentheses. Each position
+// in the tuple has a type, and types of different values in the tuple dont have to be the same
