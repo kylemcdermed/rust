@@ -39,3 +39,16 @@
 //
 // lets add another parameter inside our function
 //
+// the declaration of another_function has one parameter named x, the type of x is specified to
+// i32. when we pass 5 in to another function, the println! macro puts 5 where the pair of curly
+// brackets containing x was in th format string
+//
+// in function signatures, you must declare the type of each parameter. this is a delivrate
+// decision in Rust's design: requiring type annotations in function definitions means the compiler
+// almost never needs you to use them elsewhere in the code to figure out what type you mean. 
+//
+// the compiler is also able to give more helpeful error messages if it knows what types the
+// function expects
+//
+// when defining multiple parameters, separate the parameter declarations with commas, like this
+//
