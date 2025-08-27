@@ -92,3 +92,11 @@
 // the variable tup binds to the entire tuple because tuple is considered a single compound
 // element. To get the individual values of a tuple, we can use pattern matching to destructure a
 // tuple value
+//
+// the program first creates a tuple and binds it to the variable tup. it then uses a pattern with
+// let to take tup and turn it into three seperate variables x,y,z. this is called destructuring
+// because it breaks the single tuple into three parts. finally the program prints the value of y,
+// which is 6.4
+//
+// we can also access a tuple element directly using a period (.) followed by the index of the
+// value we want to access
