@@ -126,3 +126,18 @@
 // can return early from a function by using the `return` keyword by specifying a value, but most
 // functions return the last expression implicitly. 
 //
+// there are no function calls, macros, or even let statements in the five function - just the
+// number 5 by itself. thats a perfectly valid function in Rust. note, that the functions return
+// type is specified too, as -> i32. 
+//
+// the 5 in the five() is the functions return value, which is why the return type is i32. lets
+// understand why, there are two important bits: first, the line let x = five(); shows that were
+// using the return value of a function to initialize a variable. because the function five returns
+// a 5, that line is the same as the following ..
+//
+// let x = 5;
+//
+// second, the five function has no parameters and defined the type of the return value, but the
+// body of the funcion is a lonely 5 with no semi colon because its an expression whose value we
+// want to return
+//
