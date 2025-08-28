@@ -141,3 +141,11 @@
 // body of the funcion is a lonely 5 with no semi colon because its an expression whose value we
 // want to return
 //
+// running this code will print 
+// the value of x is: 6
+//
+// but if we place a semi colon at the end of line containing x + 1, changing it from an expression
+// to a statement well get an erorr.
+//
+//
+//
