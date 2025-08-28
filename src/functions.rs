@@ -105,4 +105,24 @@
 // expression. a new scope block created with curly brackets is an expression
 //
 //
+// this expression:
+// {
+//      let x = 3;
+//      x + 1
+// }
+//
+// is a block that, in this case, evaluates to 4. that value gets bound to y as part of the let
+// statement. note that the x + 1 line doesnt have a semi colon at the end, which is unlike most of
+// the lines youve seen so far. expression do not include ending semi colons. if you add a semi
+// colon to the end of an expression, you turn it into a statement, and it will then not return a
+// value. keep this in mind as you explore function return values and expressions next.
+//
+// 
+// FUNCTIONS WITH RETURN VALUES 
+//
+// functions can return values to the code that calls them. we dont name return values, but we
+// must declare their type after an arrow (->). in Rust, the return value of the function is
+// synonymous with the value of the final expression in the block of the body of a function. you
+// can return early from a function by using the `return` keyword by specifying a value, but most
+// functions return the last expression implicitly. 
 //
