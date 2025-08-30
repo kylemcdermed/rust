@@ -119,6 +119,22 @@
 // to specify that those keywords apply to the labeled loop instead of the innermost loop. loop
 // labels must begin with a single quote
 //
+// the outer loop has the lbale 'counting_up, and it will count from 0 to 2. the inner loop without
+// a label counts down from 10 to 9. the first break that doesnt specify a label will exit the
+// inner loop only. the break 'counting_up; statement will exit the outer loop
+//
+//
+// CONDITIONAL LOOPS WITH WHILE 
+//
+//
+// a program will often need to evaluate a condition within a loop. while the condition is true,
+// the loop runs. when the condition ceases to be true, the program calls break, stopping the loop.
+// its possible to implement behavior like this using a combination of loop, if, else, and break;
+// you could try that now in a program. however this pattern is so common that Rust has built in a
+// language construt for it, called a while loop. 
+//
+//
+//
 //
 //
 //
