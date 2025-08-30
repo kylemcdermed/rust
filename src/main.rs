@@ -9,7 +9,7 @@ fn main() {
 
         loop {
             println!("remaining == {remaining}");
-            if remaining == 0 {
+            if remaining == 9 {
                 break;
             }
             if count == 2 {
