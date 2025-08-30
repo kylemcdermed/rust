@@ -91,6 +91,25 @@
 // the `loop` keyword tells Rust execute a block of code over and over again forever or until you
 // expicitly tell it to stop
 //
+// when we run this program, well see 'again!' printed over and over continously until we stop the
+// program manually. most terminals support the keyboard shortcut ctrl-c to interrupt a program
+// that is stuck in a infinite loop
+//
+// fortunately, Rust also provides a way to break out of a loop using code, you can place a break
+// keyword within the loop to tell the program when to stop executing the loop.
+//
+// we also used continue in the guessing game, which in a loop tells the program to skip over any
+// remaining code in this iteration of the loop and go to the next iteratio
+//
+//
+// RETURNING VALUES FROM LOOPS
+//
+// one of the uses of a loop is to retry an operation you might fail, sich as checking whether a
+// thread has completed its job. you might also need to pass the result of that operation out of
+// the loop to the rest of your code. to do this, you can add the value you want returned after the
+// break expression you use to stop the loop; that value will be returned out of the loop so you
+// can use it
+//
 //
 //
 //
