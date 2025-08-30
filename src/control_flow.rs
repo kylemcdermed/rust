@@ -160,6 +160,20 @@
 // a more concise alternative, you can use a for loop and execute some code for each item in a
 // collection
 //
+// when we run this code we have now increased the safety of the code, and eliminated the chance of
+// bugs that might result from going beyond the end of the array or ont going far enough and
+// missing some items. machine code generated from for loops can be more effiicent as well, because
+// the index doesnt need to be compared to the length of an array on every iteration
+//
+// using the for loop you wouldnt need to remember to change any other code if you changed the
+// number of values in the array
+//
+// safety and consciouness of for loops make them the most commonly used loop construct in Rust.
+// Even in situations in which you wan tto run some code a certain number times, in the countdow
+// example using a while loop. most Rustaceans would use a for loop. the way to do that would to
+// use a `Range`, provided by the standard library, which generates all numbers in sequence
+// starting from one number and ending before another number
+//
 //
 //
 //
