@@ -133,6 +133,16 @@
 // you could try that now in a program. however this pattern is so common that Rust has built in a
 // language construt for it, called a while loop. 
 //
+// the construct eliminate a lot of nesting that would be necessayr if you used loop, if, else and
+// break, and its clearer. while a condition evaluates to true, the code runs; otherwise, it exits
+// the loop
+//
+//
+// LOOPING THROUGH A COLLECTION WITH FOR 
+//
+// you can choose to use the while construct to loop over the elements of a collection, such as an
+// array
+//
 //
 //
 //
