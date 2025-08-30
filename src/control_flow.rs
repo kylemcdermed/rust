@@ -42,4 +42,21 @@
 //
 // you can use multiple conditions by combining if and else in an else if expression
 //
+// the program has 4 possible paths it can take
+//
+// when this program executes, it checks each if expression in turn and executes the first body for
+// which the conidition evaluates to true. note that even though 6 is divisible by 2, we dont see
+// the output number is divisible by 2, nor do we see the number is not divisible by 4, 3, or 2
+// text from the else block. thats because Rust only executes the block for the first true
+// condition, once it finds one, it doesnt even check the rest.
+//
+// using too many else if expressions can clutter your code, so if you have more than one, you
+// might want to refactor your code
+//
+//
+// USING IF IN A LET STATEMENT 
+//
+// because if is an expression, we can use it on the right side of a let statement to assign the
+// outcome to a variable 
+//
 //
