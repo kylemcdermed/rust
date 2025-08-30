@@ -24,3 +24,15 @@
 // we can change the number variable to a value that makes the condition false 
 //
 // let number = 7;
+//
+// its also worth noting that the condition in this code must be a ool. if the condition isnt a
+// bool, well get an error
+//
+// if the condition evaluates to a value, Rust throws an error 
+//
+// the erorr indicates that Rust expected a bool but got an integer, Rust does not automatically
+// try to conver non boolean types to a boolean. you must explicitly and always provide if with a
+// boolean as its condition. if we want the if code block to run only when a number is not equal to
+// 0, for example, we can change the if statement to say
+//
+// if number != 0
