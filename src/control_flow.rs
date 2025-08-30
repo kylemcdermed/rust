@@ -67,6 +67,30 @@
 // the if must be the same type. the results of both the if arm and the else arm were i32 integers.
 // if the types are mismatched, well get an error
 //
+// the expression in the if block evaluates to an integer, and the expression in the else block
+// evaluates to a string. this wont work because variables must have a single type, and Rust needs
+// to know at compile time what type the `number` variable is, definitively. knowing the type of
+// number lets the compiler verify the type is valid everywhere we use number. Rust wouldnt be able
+// to do that if the type of number was only determined at runtime; the compiler would be more
+// complex and would make fewer guarantees about the code if it had to keep track of multiple
+// hypothetical types for any variable
+//
+//
+// REPEITION WITH LOOPS
+//
+// its often useful to execute a block of code more than once. for this task, Rust provides several
+// loops, which will run through the code inside the loop body to the end and then start
+// immediately back at the beginning. to experiment with loops, lets make a new project called
+// loops.
+//
+// Rust has three kinds of loops: loop, while, and for. lets try each one
+//
+//
+// REPEATING CODE WITH LOOPS
+//
+// the `loop` keyword tells Rust execute a block of code over and over again forever or until you
+// expicitly tell it to stop
+//
 //
 //
 //
