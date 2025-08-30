@@ -59,4 +59,22 @@
 // because if is an expression, we can use it on the right side of a let statement to assign the
 // outcome to a variable 
 //
+// the number variable will be bound to a value based on the outcome of the if expression
+//
+// remember that blocks of code evaluate to the last expression in them, and numbers by themselves
+// are also expressions. in this case, the value of the whole if expression depends on which block
+// of code executes. This means the values that have the potential to be rsults from each arm of
+// the if must be the same type. the results of both the if arm and the else arm were i32 integers.
+// if the types are mismatched, well get an error
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
