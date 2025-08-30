@@ -9,3 +9,18 @@
 // an if expression allows you to branch your code depending on conditions, you provide a condition
 // and then state, if this condition is met, run this block of code, if the condition is not met,
 // do not run this block of code
+//
+// all if expressions start with the keyword if, followed by the condition. in this case, the
+// condition checks whether or not the variable number has a value less than 5. we place the block
+// of code to execute if the condition is true immediately after the condition inside curly
+// brackets. blocks of code associated with the conditions in if expressions are sometimes called
+// 'arms', just like the arms in the match expressions
+//
+// optionally we can also include an else expression which we chose to do here, to give the program
+// an alternative block of code to execute should the condition evalute to false. if you dont
+// provide an else expression and the condition is false, the program will just skip the if block
+// and move onto the next bit of code
+//
+// we can change the number variable to a value that makes the condition false 
+//
+// let number = 7;
