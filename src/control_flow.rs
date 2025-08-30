@@ -144,7 +144,21 @@
 // array
 //
 //
+// the code counts up through the elements in the array, it starts at index 0, and then loops until
+// it reaches the final index int the array (that is, when index< 5 is no longer true)
 //
+// all five array values appear in the terminal, as expected. even thoug index will reach a value
+// of 5 at some point, the loop stops executing before trying to fetch the 6th value from the
+// array.
+//
+// however this approach is error pronel we could cause the program to panic if the index value or
+// test condition is incorrect. for exmaple, if you changed the definition of the a array to have
+// four elements but forgot to update the condition to while index < 4, the code could panic, its
+// also slow, because the comiler adds runtime code to perform the conditional check of whether the
+// index is within the bounds of the array on every iteration through the loop
+//
+// a more concise alternative, you can use a for loop and execute some code for each item in a
+// collection
 //
 //
 //
