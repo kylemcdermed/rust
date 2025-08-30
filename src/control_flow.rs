@@ -110,8 +110,14 @@
 // break expression you use to stop the loop; that value will be returned out of the loop so you
 // can use it
 //
+// 
+// LOOP LABELS TO DISAMBIGUATE BETWEEN MULTIPLE LOOPS 
 //
 //
+// if you have loops within loops, break and continue apply to the innermost loop at that point.
+// you can optionally specify a loop label on a loop that you can then use with a break or continue
+// to specify that those keywords apply to the labeled loop instead of the innermost loop. loop
+// labels must begin with a single quote
 //
 //
 //
