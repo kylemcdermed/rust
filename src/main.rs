@@ -2,7 +2,7 @@
 
 
 fn main() {
-    let mut count = 3;
+    let mut number = 3;
 
     while number != 0 {
         println!("{number}!");
