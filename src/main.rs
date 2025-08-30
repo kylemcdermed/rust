@@ -4,7 +4,7 @@
 fn main() {
     let mut count = 0;
     'counting_up: loop {
-        println1("count = {count}");
+        println!("count = {count}");
         let mut remaining = 10;
 
         loop {
