@@ -36,3 +36,10 @@
 // 0, for example, we can change the if statement to say
 //
 // if number != 0
+//
+//
+// HANDLING MULTIPLE CONDITIONS WITH ELSE IF 
+//
+// you can use multiple conditions by combining if and else in an else if expression
+//
+//
