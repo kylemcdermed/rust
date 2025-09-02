@@ -70,3 +70,13 @@
 //
 // as a first example of ownership, well look at the scope of some variables. a scope is the range
 // within a program for which an item is valid
+//
+// take the following variable:
+//
+// let s = "hello";
+//
+// the variable s refers to a string literal, where the value of the string is hard coded into the
+// text of our program. the variable is value from the point at which its declared until the end of
+// the current scope. 
+//
+// 
