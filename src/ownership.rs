@@ -79,4 +79,43 @@
 // text of our program. the variable is value from the point at which its declared until the end of
 // the current scope. 
 //
-// 
+// in other words, there are two important points in time here:
+//
+// - when s comes into scope, it is valid 
+// - it remains valud until it goes out of scope 
+//
+// at this point, the relationship between scopes and when variables are valid is similar to that
+// in other languages. now well build on top of this understanding by introducing the `String` type 
+//
+//
+// THE STRING TYPE 
+//
+// to illustrate the rules of ownership, we need a data type that is more complex than those
+// covered in data types. the types covered previously are of a known size, can be stored on the
+// stack and popped off the stack when their scope is over, and can be quickly and trivially copied
+// to make a new, independent instance if another part of code needs to use the value in a
+// different scope. but we want to look at data that is stored on the heap, and explore how Rust
+// knows when to clean up that data, and the String type is a great example.
+//
+// weve already seen string literals, where a string value is hard coded into our program. string
+// literals are convenient, but they arent suitable for every situation in which we may want to use
+// text. one reason is that their immutable. another is that not every string value can be known
+// when we write our code: for example, what if we want to take user input and store? for these
+// situations, Rust has a second string type, String. this type manages data allocated on the heap
+// and as such is able tostore an amount of text that is unknown to us at compile time. 
+//
+// you can create a String from a string literal using the from function:
+//
+// let s = String::from("hello");
+//
+// the double colon :: operator allows us to namespace this particular `from` function under the
+// `String` type rather than using some sort of name like `string_from`
+//
+// this kind of string can be mutated:
+//
+// let mut s = String::from("hello");
+// s.push_str(", world!"); // push_str() appends a literal to a String 
+// println!("{s}"); // this will print "hello, world!"
+//
+// so, what the difference here? why can `String` be mutated but literals cannot? the difference is
+// in how these two types deal with memory
