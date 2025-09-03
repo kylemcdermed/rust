@@ -210,4 +210,94 @@
 // Therefore, Rust does not need to free anything when s1 goes out of scope. Check out what happens
 // when you try to use s1 after s2 is created; it wont work...
 //
+// if youve heard the terms shallow copy and deep copy while working in other languages, the
+// concept of copying the pointer, length, and capacity without copying the data probably sounds
+// like making a shallow copy. but because Rust also invalidates the first variable, instead of
+// being called a shallow copy, this is known as a move. in this example, we would say that s1 was
+// moved into s2.
+//
+// that solves our problem! with only s2 valid, when it goes oout of scope it alone will free the
+// memory, and were done.
+//
+// in addition, theres a design choice that implies: Rust will never automatically create "deep"
+// copies of your data. therefore, any automatic copying can be assumed to be inexpensive in terms
+// of runtime performance
+//
+//
+// SCOPE AND ASSIGNMENT 
+//
+// the inverse of this is true for the relationship between scoping, ownership and memory being
+// freed via the drop function as well. when you assign a completely new value to an existing
+// variable, Rust will call `drop` and free the original values memory immediately. consider this
+// code:
+//
+// let mut s = String::from("hello");
+// s = String::from("ahoy");
+// println!("{s}, world!");
+//
+// we initially declare a variable s and bind it to a String with the value "hello". then we
+// immediately create a new String with the value "ahoy" and assign it to s. at this point, nothing
+// is referring to the original value on the heap at all.
+//
+// the original string thus immediately goes out of scope. Rust will run the drop function on it
+// and its memory will be freed right away. when we print the value at the end, it will be "ahoy,
+// world!"
+//
+//
+// VARIABLES ARE DATA INTERACTING WITH CLONE 
+//
+// if we do want to deeply copy the heap data of the String, not just the stack data, we can use a
+// common  method called clone. here is an example:
+//
+// let s1 = String::from("hello");
+// let s2 = s1.clone();
+// println!("s1 = {s1}, s2 = {s2}");
+//
+// this works just fine and explicitly produces the behavcior shown where the heap data does get
+// copied
+//
+// when you see a call to clone, you know that some aribtrary code is being executed and that code
+// may be expensive. 
+//
+// 
+// STACK ONLY DATA: COPY
+//
+// theres another wrinkly we havent talked about yet, this code using integers - part of which
+// works and is valid:
+//
+// let x = 5;
+// let y = x;
+// println!("x = {x}, y = {y}");
+//
+// but this code seems to contradict what we just learned: we dont have a call to clone, but x is
+// still valid and wasnt moved into y.
+//
+// the reason is that types such as integers that have a known size at compile time are stored
+// entirely on the stack, so copies of the actual values are quick to make. that means theres no
+// reason we would want to prevent x from being valid after we create the variable y. in other
+// words, theres no difference between deep and shallow copying here, so calling clone wouldnt do
+// anything different from the usual shallow copying, we can leave it out
+//
+// Rust has special annotatios called the Copy trait that we can plac on types that are stored on
+// the stack, as integers are. if a type implements the copy trait, variables that use it do not
+// move, but rather are trivally copied, making them still invalid after assignment to another
+// variable.
+//
+// Rust wont let us annotate a type with copy if the type or any of its parts are implemented the
+// Drop trait. if the type needs something special to happen when the value goes out of scope and
+// we add the Copy annotatoin to that type, well get a compiler time error. 
+//
+// so what types implement the copy trait? here are some of the types that implement copy:
+// - all integer types, such as u32
+// - the boolean type, bool, with values true and false
+// - all the floating point types, such as f64
+// - the char type, char
+// - tuples if they only contain types that also implement Copy. 
+//
+//
+// OWNERSHIP AND FUNCTIONS
+//
+// the mechanics of passing a value to a function are similar to those when assigning a value to a
+// variable. passing a value to a function will move or copy, just as assignment does...
+//
 //
