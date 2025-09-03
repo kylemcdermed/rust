@@ -119,3 +119,95 @@
 //
 // so, what the difference here? why can `String` be mutated but literals cannot? the difference is
 // in how these two types deal with memory
+//
+// 
+// MEMORY AND ALLOCATION
+//
+// in the case of a string literal, we know the contents at compile time, so the text is hard coded
+// directly into the final executable, this is why string literals are fast and efficient. but
+// these properties only come from the string literals immutability. unfornately we cant put a blob
+// of memory into the binary for each piece of text whose size is unknown at compile time and whose
+// size might change while running the program
+//
+// with the string type, in order to support the mutable, growing piece of text, we need to
+// allocate an amount of memory on the heap, unknown at compile time, to hold the contents, this
+// means:
+// - the memory must be requested from the memory allocator at runtime 
+// - we need a way of returning this memory to the allocator when we are done with our string
+//
+// that first part is done by us, when we call String::from, its implementation requests the memory
+// it needs.
+//
+// however, the second part is different. in languages with a garbage collector, the GC keeps track
+// of and cleans up memory that isnt being used anymore, and we dont need to think about it. in
+// most languages without a garbage collector its our responsibility to identify when memory is
+// longer being used and to call code explicitly free it, just as did to request it. doing this
+// correctly has historically been a difficult programming problem. if we forget, well waste
+// memory. if we do it too early, well have an invalid variable. if we do it twice, thats a bug
+// too. we need to pair exactly one allocate with exactly one free
+//
+// Rust takes a different path, the memory is automatically returned once the variable that owns it
+// goes out of scope, here is an example using a string instead of a string literal:
+//
+// {
+//      let s = String::from("hello"); // s is valid from this point forward
+//      // do stuff with s 
+// }                                  // this scope is now over, annd s is no longer valid
+//
+// there is a natural point at which we can return the memory our String needs to the allocator:
+// when s goes out of scope. when a variable goes out of scope, Rust calls a special function for
+// us, this function is called drop, and its where the author of String can put the code to reutrn
+// the memory. Rust calls drops automatically at the closing curly bracket
+//
+// this pattern has a profound impact on the way Rust code is written. it may seem simple right
+// now, but the behavior of code can be unexpected in more complicated situations when we want to
+// have multiple variables use data weve allocated on the heap. 
+//
+//
+// VARIABLES AND DATA INTERACTING WITH MOVE 
+//
+// multiple variables can interact with the same data in different ways in Rust
+// for example:
+//
+// let x = 5;
+// let y = x;
+//
+// you can probably guess what this is doing: "bind the value 5 to x; then make a copy of the value
+// in x and bind it to y". we now have two variables, x and y, and both equal 5. this is indeed
+// what is happening, because integers are simple values with a known fixed size and these two 5
+// values are pushed onto the stack
+//
+// lets look at the string version:
+//
+// let s1 = String::from("hello");
+// let s2 = s1;
+//
+// this looks very similar so we might assume that the way it works would be the same. that is, the
+// second line, would make a copy of the value in s1 and bind it to s2. but this isnt quite what
+// happens
+//
+// the figure on screen shows what is happening. a String is made up of three parts, shown on the
+// left: a pointer to the memory that holds the contents of the string, a length, and a capacity.
+// this group of data is stored on the stack. on the right is the memory on the heap that holds te
+// contents.
+//
+// the length is how much memory, in bytes, the contents of the String are currently using. the
+// capacity is the total amount of memory, in bytes, that the String has recieved from the
+// allocator. The difference between length and capacity matters, but not in this context, so for
+// now, ignore the capacity.
+//
+// when we assign s1 to s2, the String data is copied, meaning we copy the pointer, the length, and
+// capcity that are on the stack. we do not copy the data on the heap that pointer refers to.
+//
+// earlier we said that when a variable goes out of scope, Rust automatically calls the drops
+// function and cleans up the the heap memory for that variable. figure 4-2 shows both data
+// pointers pointing to the same location. this is a problem: when s2 and s1 go out of scope, they
+// will both try to free the same memory location. this is known as a double free error and is one
+// the memory safety bugs we mentioned previously. freeing memory twice can lead to memory
+// corruption, which can potentially lead to security vulnerabilities.
+//
+// the ensure memory safety, after the line: let s2 = s1; Rust considers s1 no longer valid.
+// Therefore, Rust does not need to free anything when s1 goes out of scope. Check out what happens
+// when you try to use s1 after s2 is created; it wont work...
+//
+//
