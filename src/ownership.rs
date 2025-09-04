@@ -300,4 +300,20 @@
 // the mechanics of passing a value to a function are similar to those when assigning a value to a
 // variable. passing a value to a function will move or copy, just as assignment does...
 //
+// 
+// RETURN VALUES AND SCOPE 
 //
+// returning values can also transfer ownership
+//
+// the ownership of variable follows the same pattern every time: assigning a value to another
+// variable moves it. when a variable that includes data on the heap goes out of scope, the value
+// will be cleaned up by drop unless ownership of the data has been moved to another variable
+//
+// while this works, taking ownership and then returning ownership with every function is a bit
+// tedious. what if we want to let a function use a value but not take ownership? its quite
+// annoying that anything we pass in also needs to be passed back if we want to use it again, in
+// addition to any data resulting form the body of the function that we might want to return as
+// well
+//
+// but this is too much ceremony and a lot of work for a concept that should be common, luckily for
+// us, Rust has a feature for using a value without transferring ownership, called references
