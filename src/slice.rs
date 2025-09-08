@@ -167,4 +167,32 @@
 // defining a function to take a string slice instead of a reference to  a String makes our API
 // more general and useful without losing any functionality:
 //
+// 
+// OTHER SLICES 
 //
+// string slices, as you might imagine, are specific to strings. but theres more general slice type
+// too. consider this array:
+//
+// let a = [1,2,3,4,5];
+//
+// just as we might want to refer to part of a string, we might want to refer to part of an array,
+// wed do so like this:
+//
+// let a = [1,2,3,4,5];
+// let slice = &a[1..3];
+// assert_eq!(slice, &[2..3]);
+//
+// this slice has the type &[i32]. it works the same way as string slices do, by storing a
+// reference to the first element and a length. youll use this kind of slice for all sorts of other
+// collections. well discuss these collections in detail whn we talk more about vectors
+//
+//
+// SUMMARY 
+//
+// the concept of ownership, borrowing and slices ensure memory safety in Rust programs at compile
+// time. the Rust language gives you control over your memory usage in the same way as other system
+// languages, but having the owner of data automatically clean up that data when the owner goes out
+// of scope means you dont have to write and debug extra code to get this control
+//
+// owernship affects how lots of other parts of rust work, so well talk about these concepts
+// further
