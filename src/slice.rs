@@ -109,4 +109,62 @@
 // with all this information in mind, lets rewrite first_word to return a slice. the type that
 // signifies 'string slice' is written as &str:
 //
+// we get the index for the end of the word the same way we did before, by looking for the first
+// occurrence of a space. when we find a space, we return a string using the start of the string
+// and the index of the space as the starting and ending indices
+//
+// now when we call first_word, we get back a single value that is tied to the underlying data. the
+// value is made up of a reference to the starting point of the slice and the numbe rof elements in
+// the slice.
+//
+// returning a slice would also work for a second_word function: 
+//
+// fn second_word(s: &String) -> &str {}
+//
+// we now a straightfoward API thats much harder to mess up because the compiler will ensure the
+// references into the String remain valid. Remember the bug in the program before? when we got the
+// index to the end of the first word but then cleared the string so our index was invalid? the
+// code was logically incorrect but didnt show any immediate errors. the problems would show up
+// later if we kept trying to use the first word index with an emptied string. slices make this bug
+// impossible and let us know we have a problem with our code much sooner. using the slice version
+// of first_word will throw a compile time error
+//
+// recall from the borrowing rules that if we have an immutable reference to something, we cannot
+// also take a mutable refernce. because clear needs to truncate the String, it needs to get
+// mutable reference. the println! after the call to clear uses the reference in word, so the
+// immutable reference must still be active at that point. Rust disallows that mutable reference in
+// clear and the immutable reference in word from exitisting at the same time and compilatio fails.
+// Not only has Rust made our API easier to use, but it also has elimainated an entire class of
+// errors at compile time!
+//
+//
+// STRING LITERALS AS SLICES
+//
+// recall that we talked about string literals being stored inside the binary. now that we know
+// about slices, we can properly understand string literals:
+//
+// let s = 'hello, world!';
+//
+// the type of s here is &str: its a slice pointing to that specific point of the binary. this is
+// also why strig literals immutable; &str is immutable reference
+//
+//
+// STRING SLICES AS PARAMETERS 
+//
+// knowing that you can take slices of literals and String values lead up to one more improvement
+// on first_word, and that its signature:
+//
+// fn first_word(s: &String) -> &str {}
+//
+// a more experienced Rustacean would write the signature shown below because it allows us to use
+// the same function on both &String values andn &str values
+//
+// fn first_word(s: &str) -> &str {}
+//
+// if we have a string slice, we can pass that directly. if we have a String, we can pass a slice
+// of the String or reference to the String. this flexibility takes advantage of deref coercions
+//
+// defining a function to take a string slice instead of a reference to  a String makes our API
+// more general and useful without losing any functionality:
+//
 //
