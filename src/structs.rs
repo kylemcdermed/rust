@@ -59,4 +59,23 @@
 // init shorthand syntax to rewrite build_user so it behaves exactly like the same but doesnt have
 // the repitition of username and email
 //
+// here we are creating a new instance of the User struct, which has a field name email. we want to
+// set the email field value in the email parameter of the build_user function. because the email
+// field and the email parameter have the same name, we only need to write email rather than email:
+// email
+//
+//
+// CREATING INSTANCES FROM OTHER INSTANCES WITH STRUCT UPDATE SYNTAX 
+//
+// its often useful to create a new instance of a struct that icludes most of the values from
+// another instance using the same type, but changes some. you can do this using struct update
+// syntax
+//
+// first we show how to create a new user instance in user 2 regularly, without the update syntax.
+// we set a new value for email but otherise use the same values from user1 
+//
+// using struct update syntax we can achieve the sam effect with less code, the syntax `..`
+// specifies that the remaining fields not explicitly set should have the same value as the fields
+// in the given instance
+//
 //
