@@ -78,4 +78,83 @@
 // specifies that the remaining fields not explicitly set should have the same value as the fields
 // in the given instance
 //
+// the code creates an instance in user2 that has a different value for email but has the same
+// values for username, active, sign_in_count fields from user1
+//
+// the ..user1 must come las tto specify that any remaining fields should get their values from the
+// corresponding fields in user1, but we can choose to specify values for as many fields as we want
+// in any order, regardless of the order of the fields in the structs definition
+//
+// note that the struct update syntax uses `=` like an assignmentl this is because it moves the
+// data, just as we saw in the variables and data interacting with move section.
+//
+// in this example we can no longer use user1 afer creating user2 because the String in the
+// username field of user1 was moved into user2, if we had given user2 new String values for obth
+// email and username, and this only used the active and sign_in_count values from user1, then
+// user1 would still be valid after creating user2. both active and sign_in_count are types that
+// implemenet the Copy train, so the behavior we discussed in Copy sectio would apply. we can also
+// still use user1.email in this example because its value was note moved out of user1
+//
+//
+// USING TUPLE STRUCTS WITHOUT NAMED FIELDS TO CREATE DIFFERENT TYPES 
+//
+// Rust also supports structs that look similar to tuples called tuple structs, tuple structs have
+// the added meaning the struct name provides but doesn thave names associated with their fields;
+// rather, they just have the types of the fields. tuple structs are useful when you want to give
+// the whole tuple a name and make the tuple a different type from other tuples, and when naming
+// each field as in a regular struct would be verbose or redundant 
+//
+// to define a tuple struct, stat with the struct keyword and the struct name followed by the types
+// in the tuple
+//
+// struct Color(i32, i32, i32);
+// struct Point(i32, i32, i32);
+//
+// fn main() {
+//      let black = Color(0,0,0);
+//      let origin = Point(0,0,0);
+// }
+//
+// note that black and origin values are different types because theyre instances of different
+// tuple structs, each struct you define is its own type, even though the fields within the struct
+// might have the same types. for example, a function that takes a parameter of type Color cannot
+// take a Point as an argument, even though both types are made up of three i32 values. otherwise
+// tuple structs instances are similar to tuples in that you can destructre them into their
+// individual value. unlike tuples, tuple structs require you to name the type of the struct when
+// you destruct them. for example, we would write let Point(x,y,z) = origin; to destructure the
+// values in the oprigin point into variables named x,y,z
+//
+//
+// UNIT LIKE STRUCTS WITHOUT ANY FIELDS 
+//
+// you can define structs that dont have any fields! these are called unit-like structs because
+// they behave similarly to `()`, the unit type we mentioned in tuple type section. unit like
+// structs can be useful when you need to implement a trait on some type but dont have any data
+// that you wan tto store in the type itself.
+//
+// struct AlwaysEqual;
+//
+// fn main() {
+//      let subject = AlwaysEqual;
+// }
+//
+// to define AlwaysEqual, we use the struct keyword, the name we want, and then a semi colon. No
+// need to curly brackets or parenthesis! then we can get an instance of AlwaysEqual in the subject
+// variable in a similar eway: using the name we defined, without any curly bracketes or
+// parentheses. imagine that later well implement behavior for this type such that every instance
+// of AlwaysEqual is always equal to every instance of any other type, perhaps to have a known
+// results for testing purposes.
+//
+//
+// OWNERSHIP OF STRUCT DATA
+//
+// in the user struct, we used the owned String type rather than the &str string slice type. this
+// is delibrate choice because we want each instance of this struct to own all of its data for that
+// data to be valid for as long as the entire struct is valid.
+//
+// its also possible for structs t store references to data owned by something else, but to do so
+// requires the use of lifetimes, a Rust feature. Lifetimes ensure that the data referenced by a
+// struct is valid for as long as the struct is. Lets say you try to store a reference in a struct
+// without specifying lifetimes, like the following this wont work
+//
 //
