@@ -35,4 +35,10 @@
 // struct and then add curly brackets containing `key:value` pairs, where the keys are the names of
 // the fields and the values are the daa we want to store in those fields.
 //
+// to get specific value from a struct we use dot notation. for example, to access this users email
+// address we use --> user1.email
+//
+// if the instance is mutable, we can change a value by using the dot notation and assigning into a
+// particular field
+//
 //

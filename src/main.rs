@@ -10,4 +10,6 @@ fn main() {
         email: String::from("someone@example.com"),
         sing_in_count: 1,
     };
+
+    user1.email = String::from("anotheremail@example.com");
 }
