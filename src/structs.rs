@@ -157,4 +157,14 @@
 // struct is valid for as long as the struct is. Lets say you try to store a reference in a struct
 // without specifying lifetimes, like the following this wont work
 //
+// 
+// AN EXMAPLE PROGRAM USING STRUCTS
+//
+// to understand when we might wan tto use structs lets write a progream tha tcalculates the area
+// of a rectangle. well start by using single variables, then refractor the program until were
+// using structs instead
+//
+// lets make a new binary project with cargo called rectangles that will take the width and height
+// of a rectangle specified in pixels and calculate the area of the rectangle
+//
 //
