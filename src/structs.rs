@@ -260,4 +260,14 @@
 // Nice! its not the prettiest output but it shows the values of all the fields for this instance,
 // which would definitly help during debugging. when we have larger structs, its useful to have
 // output thats a bit easier to read; in those cases we can use {:#?} instead of {:?} in the
-// println! string. 
+// println! string.
+//
+// another way to print out a value using the Debug format is to use the dbg! macro, whichs takes
+// ownership of an expression (as opposed to println!, which takes a reference), prints the file
+// and line number of where that dbg! macro call occurs in your code along with the resultant value
+// of that expression, and returns ownership of that value
+//
+// Note: calling dbg! macro prints to the standard error console stream (stderr) as opposed to the
+// println! , which prints to the standard output console stream (stdout)
+//
+//

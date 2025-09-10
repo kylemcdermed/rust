@@ -14,5 +14,5 @@ fn main() {
         height: 50,
     };
 
-    println!("rect1 is: {rect1:?}");
+    println!("rect1 is: {rect1:#?}");
 }
