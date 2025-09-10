@@ -182,4 +182,82 @@
 //
 // REFRACTORING WITH TUPLES
 //
+// in one way this program is better. the tuples let us add a bit of structure and now were passing
+// just one argument but in another way, this version is less clear: tuples dont name their
+// elements, so we have to index into the parts of the tuple, mkain gour calculation less obvious.
 //
+// mixing up the width and height wouldnt matter for the area calculation, but if we wan tto draw
+// the rectangle on the screen, it would matter! we would have ot keep in mind that width is the
+// tuple index 0 and height is the tuple index 1. this would be even harder for someone else to
+// figure out and keep in mind if they were to use our code. because we havent conveyed the
+// meaning of our data in our code its now eaier to introduce errors.
+//
+//
+// REFRACTORING WITH STRUCTS: ADDING MORE MEANING 
+//
+// we use strcuts to add meaning by labeling the data. we transform the tiple were using into a
+// struct with a name for the whole as well as names for parts
+//
+// were we have defined a struct and named it Rectangle. inside the curly brackets, we defined the
+// fields as width and height, both of which have type u32. then in main we created a particular
+// instance of Rectangle that has a width of 30 and a height of 50.
+//
+// our area function is now defined with one parameter, which is named rectange, whose type is an
+// immutable borrow of struct rather than take ownership of it. this way main retains its ownership
+// and can continue using rect1 which is the reason we use the & in the function signature and
+// where we call the function
+//
+// the area function accesses the width and height fields of the rectangle instance (note that
+// accessing fields of borrowed struct instance does not move the field values, which is why you
+// can often see borrows of structs). our function signature for area now says exactly what we
+// mean: calculate the area of Rectangle using its width and height fields. this conveys that the
+// width and height are related to each other, and it gives descriptive names to the values rather
+// than using the tuple index values of 0 and 1 . this is a win for clarity.
+//
+//
+// ADDING USEFUL FUNCTIONALITY WITH DERIVED TRAITS
+//
+// its be useful to be able to print an instance of Rectangle while were debugging our program and
+// see the values for all its fields. 
+//
+// struct Rectangle {
+//      width: u32,
+//      height: u32,
+//  }
+//
+//  fn main() {
+//      let rect1 = Rectangle {
+//          width: 30,
+//          height: 50,
+//      };
+//      println!("rect1 is {rect1}");
+//  }
+//
+//  when this code compiles we get an eror saying Rectangle doesnt implement std::fmt::Display
+//
+//  the println! macro can do many kinds of formatting, and by default the curly brackets tell
+//  println! to use formatting known as display: output intended for direct end user consumption.
+//  this primitive types weve seen so far implement Display by default because theres only one way
+//  youd wan tto show a 1 or any other primitive type to a user. but the structs, the way println!
+//  should format the output is less clear because there are more display probabilities: do you wan
+//  tcommans or not? do you wan tto print the curly bracket? shold all field be shown? due to this
+//  ambiguity, Rust doesnt try to guess what we want, and structs dont have provided implementation
+//  of Display to use the println! and the {} placeholder
+//
+//  using the ? inside --> {rect1:?} this is known as pretty print to debug and a useful way devs
+//  can see its value while were debugging 
+//
+//  however when we compile we come across this errors trait 'debug' is not implemented for
+//  'rectangle' -- add '#[derive(Debug)]' to 'rectangle'
+//
+//  Rust does include functionality to print out debugging information but we have to explicitly
+//  opt in to make that functionalty available for our struct. to do that, we add the outer
+//  atttribute #[derive(debug)] just before the struct definition
+//
+// when we run the program we dont get erros and see the code saay 'rect1 is Rectangle {width: 30,
+// height: 50}
+//
+// Nice! its not the prettiest output but it shows the values of all the fields for this instance,
+// which would definitly help during debugging. when we have larger structs, its useful to have
+// output thats a bit easier to read; in those cases we can use {:#?} instead of {:?} in the
+// println! string. 
