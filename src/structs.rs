@@ -167,4 +167,19 @@
 // lets make a new binary project with cargo called rectangles that will take the width and height
 // of a rectangle specified in pixels and calculate the area of the rectangle
 //
+// the code succeeds in figuring out the area of the rectangle by calling thee area function with
+// each dimension but we can do more to make this code clear and readble
+//
+// the issue with this code is evident in the signature of area:
+//
+// fn area(width: u32, height: u32) -> u32 {}
+//
+// the area function is suppose to calculate the area of one rectangle but the function we wrote
+// has two parameters, and its not clear anywhere in our program that the parameters are relatred.
+// it would be more readable and more manageable to group width and height together, as we have
+// disucssed one wya to do that in tuples
+//
+//
+// REFRACTORING WITH TUPLES
+//
 //

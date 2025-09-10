@@ -1,29 +1,13 @@
 
 
 
-struct User {
-    active: bool,
-    username: &str,
-    email: &str,
-    sign_in_count: u64,
-}
-
-
-fn build_user(email: String, username: String) -> User {
-    User {
-        active: true,
-        username,
-        email,
-        sign_in_count: 1,
-    }
+fn area(width: u32, height: u32) -> u32 {
+    width * height
 }
 
 fn main() {
-    
-    let user1 = User {
-        active: true,
-        username: String::from("someusername123"),
-        email: String::from("someone@example.com"),
-        sign_in_count: 1,
-    };
+    let width1 = 30;
+    let height1 = 50;
+
+    println!("The area of the rectangle {} square pixels.", area(width1, height1));
 }
