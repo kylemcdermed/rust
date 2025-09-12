@@ -299,4 +299,110 @@
 // lets change the area function that has a Rectangle instance as a parameter instead make an area
 // method defined on the Rectangle struct
 //
+// to define the function within the context of Rectangle, we start an impl (implementation) block
+// for Rectangle. Everything within this impl block will be associated with the Rectangle type.
+// Then we move the area function within the impl curley brackets and change the first (and in this
+// case, only) parameter to be self in the signature and everywhere within the body.
 //
+// in main we where we called the area function and passed rect1 as an argument, we can instead use
+// method syntax to call the area method on our Rectangle instance. the method syntax goes after an
+// instance: we add a dot followed by the method name, parenthese and any arguments
+//
+// in the signature for area, we use &self instead of rectangle: &Rectangle. the &self is actually
+// short for self: &Self. within an impl block, the type Self is an alias for the type that the
+// impl block is for. Methods must have a parameter named self of type Self for the first
+// parameter, so Rust lets you abbreviate this with only the name self in the first parameter spot.
+// note that we will still need to use the & in front of the self shorthand to indicate that this
+// method borrows the Self instance, just as we did in racetangle: &Rectangle. Methods can take
+// ownership of self, borrow self immutably, as weve done here, or borrow self mutably, just as
+// they can any other parameter
+//
+// we chose &self here for the same reason we used &Rectangle in the function version: we dont want
+// to take ownership, and we just want to read the data in the struct, not write to it. If we
+// wanted to change the instance that weve called the method on as part of what the method does, we
+// use mut& swelf as the first parameter. having a method that takes ownership of the instance by
+// using just self as the first parameter is rare; this technique is usually used when the method
+// transforms self into something else and you want to prevent the caller from using the original
+// instance after transformation.
+//
+// the main reason for using methods instead of functions, in addition to providing method syntax
+// and not having to repeat the type of self in every methods signature, is for organization. weve
+// put all the things we can do with an instance of a type in one impl block rather than making
+// future users of our code search for compatibilities of Rectangle in various places in the
+// library we provide.
+//
+// note that we can choose to give a method the same name as one of the structs field. for exmaple
+// we can define a method on a Rectangle that is also named width:
+//
+// here we are choosing to make the width method return true is the value in the instances width
+// field is greater than 0 and false if the value is 0: we can use a field within a method of the
+// same name for any purpose. in main, when we follow rect1.width with paranthese, Rust knows we
+// mean the method width. when we dont use parenthese, Rust knows we mean the field width.
+//
+// often but not always when we wan tto give a method the same name as a field we want it to only
+// return the value in the field and do nothing else. methods like this are called getters, and
+// Rust does not implement them automatically for struct fields as some other languages do. Getters
+// are useful because you can make the field private but the method public, and thus enable
+// read-only access to that field as part of the types public api. 
+//
+//
+// WHERES THE -> OPERATOR 
+//
+// in c++ and c two different operators are used for calling methods: you can use `.` if your
+// calling a method on the object directly and `->` if your calling the method on a pointer to the
+// object and need to dereference the pointer first. in other words, if an object is a pointer,
+// object->something() is similar to (*object).something()
+//
+// Rust doesnt have an equivalent to the -> operator; instead, Rust has a feature called automatic
+// referencing and dereferencing. calling methods is one of the few places in Rust with this
+// behavior.
+//
+// here is how it works: when you call a method with object.something(), Rust automatically adds in
+// 7, mut&, or * so object matches the signature of the method. in other words, the following are
+// the same:
+//
+// p1.distance(&p2);
+// (&p1).distance(&p2);
+//
+// first one is much cleanrer. this automatic referencing behavior works because methods have a
+// clear reciever - the type of self. given the reciever and name of a method, Rust can figure out
+// definitely wheterh the method is reading (&self), mutating (&mut, self), or consuming (self).
+// the fact that Rust makes borrowing implicit for methods reciever is a big part of making
+// ownersip ergonomic in practice
+//
+//
+// METHODS WITH MORE PARAMTERES
+//
+// lets practice methods implemnting a second method on Rectangle struct. this time we wan an
+// instance of Rectangle to take another instance of Rectangle and return true if the second
+// Rectangle can fit completely within self; otherwise, it should return false. that is once weve
+// defined the can_hold method, we want to be able to write the program
+//
+// the expected output would look like the following because both dimensions of rect2 are smaller
+// than the dimensions of rect1, but rect3 is wider than rect1: true, false
+//
+// we know we wan tto define a method so it will be within the impl Rectangle block. the method
+// name will be can_hold, and it will take an immutable borrow of another Rectangle as parameter.
+// we can tell wha tth etype of paramter will be by looking a the code that calls the methods:
+// rect1.can_hold(&rect2) passing in &rect2, which is an immutable borrow to rect2, an instance of
+// Rectangle. this makes sense because we only need to read rect2 and we want main to retain
+// ownership of rect2 so we can iuse it again after calling the can_hold method. the return value
+// of can_hold will be boolean, and the implementation will check whther the width and height of
+// self are greater than the width of the other Rectangle, respectively. 
+//
+// we can run this code and get the desired output. methods can take multiple paramters that we
+// addd to the signature after the self parameter, and thos paramteres work just like paramteters
+// in functions 
+//
+//
+// ASSOCIATED FUNCTIONS
+//
+// all functions defined within a impl block are called associated functions because theyre not
+// associated with the type named after the impl. we can define associated functions that font have
+// self as their first parameter because they dont need an instance of the type to work with. weve
+// already used on function like this the String::from() function thats defined on the String type
+//
+// associated functions that arent methods are often used for constrructors that will return a new
+// instance of the struct. these are often new, but new isnt a spcial name and isnt built into the
+// language, for example, we could choose to provide and use that as both width and height, thus
+// making it easier to create a square Rectangle rather than having the same value twice 
