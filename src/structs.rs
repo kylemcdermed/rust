@@ -405,4 +405,31 @@
 // associated functions that arent methods are often used for constrructors that will return a new
 // instance of the struct. these are often new, but new isnt a spcial name and isnt built into the
 // language, for example, we could choose to provide and use that as both width and height, thus
-// making it easier to create a square Rectangle rather than having the same value twice 
+// making it easier to create a square Rectangle rather than having the same value twice
+//
+// the Self keywords in the return type and in the body of the function are aliases for the type
+// that appears after the impl keyword, which in this case is Ractangle
+//
+// to call this associated function, we use the :: syntax with the struct name; let sq =
+// Rectangle::square(3); is an exmaple. this function is namespaced by the struct: the :: syntax is
+// used for both associated functions and namespaces created by modules
+//
+//
+// MULTIPLE IMPL BLOCKS
+//
+// each struct is allowed to have multiple impl blocks, which has each method in its own impl block
+//
+// thers no reason to separate these method unto multiple impl blocks, but this is valid syntax
+//
+//
+// SUMMARY
+//
+//
+// structs let you create custom types that are meaningful for your domain. by using structs, you
+// can keep associated ppieces of data connected to each other and name each piece to make your
+// code clear. in impl blocks, you can define functions that are associated with your type, and
+// methods are a kind of asscioated functio that let oyou specify the behavior that instances of
+// your structs have.
+//
+// but structs are the only way you can create custom types: lets turn to Rusts' enum featue to add
+// another tool to your toolbox
