@@ -9,10 +9,10 @@ fn area(rectangle: &Rectangle) -> u32 {
 }
 
 fn main() {
+    let scale = 2;
     let rect1 = Rectangle {
-        width: 30,
+        width: dbg!(30 * scale),
         height: 50,
     };
-
-    println!("rect1 is: {rect1:#?}");
+    dbg!(&rect1);
 }

@@ -270,4 +270,33 @@
 // Note: calling dbg! macro prints to the standard error console stream (stderr) as opposed to the
 // println! , which prints to the standard output console stream (stdout)
 //
+// we can see that first bit of output came from line 10 where we are debugging the expression 30
+// *scale , and its resultant value is 60. the dbg! call outputs the value of &rect1, which is the
+// REctangle struct. this output uses the pretty debug formatting of the Rectangle type. the dbg!
+// macro can be really helpful when your trying to digure out what your code is doing.
+//
+// in addition to the Debug trait, Rust has provided a number of traits for us to use with the
+// derive attribute that can add useful behavior to our custom types. those traits and their
+// behaviors are listed in appendix c. 
+//
+// Our area function is very specific it only computes the area of rectangles. it would be helpful
+// to tie this behavior more closely to our recntalge struct because it wont work wiht any other
+// type. lets look at how we can continue to refactor this code by turning the area into an area
+// metod defined on our rectangle type.
+//
+// 
+// METHOD SYNTAX
+//
+// methods are similar to functions: we declare them with the fn keyword and a name, they can have
+// parameters and return a value, and they can contain some code thats run when the method is
+// called from somewhere else. unlike functions, methods are defined within a context of a struct,
+// and their first parameter is always self, which represents the instance of thre struct the
+// method is being called on
+//
+//
+// DEFINING METHODS 
+//
+// lets change the area function that has a Rectangle instance as a parameter instead make an area
+// method defined on the Rectangle struct
+//
 //
