@@ -61,4 +61,176 @@
 // inside a struct, we can put data directly into each enum variant. This new definition of the
 // IpAddr enum says that both V$ and V6 variants will have an associated String values:
 //
+// we attach data to each variant of the enum directly, so there is no need for an extra struct.
+// here, it is also easier to see another detail of how enums work: the name of each enum variant
+// that we define also becomes a function that constructs an instance of the enum. That is,
+// IpAddr::V4() is a function call that takes a string argument and returns an instance of the
+// IpAddr type. We automatically get this consutrctor function defined as a result of defining the
+// enum.
 //
+// Theres another advantage to using an enum rather than a struct: each variant can have different
+// types and amount of associated data. Version four IP addresses will always have four numeric
+// components that will have values between 0 and 255. if we wanted to store V4 addresses as four
+// u8 values but still express V6 addresses as one String value, we wouldnt be able to with a
+// struct. Enums handle this case with ease:
+//
+// enum IpAddr {
+//      V4(u8, u8, u8, u8),
+//      V6(String),
+// }
+//
+// let home = IpAddr:V4(127, 0, 0, 1);
+// let loopback = IpAddr::V6(String::from("::1");
+//
+// As it turns out, wanting to store IP addresses and encode which kind they are is so common that
+// the STL has a definition we can use. How the STL defins IpAddr: it has the exact enum variants
+// that weve defined and used but it embeds the address data inside the variants in the form of two
+// different structs, which are defined differently for each variant:
+//
+// the code illustrates that you can put any kind of data inside an enum variant: strings, numeric
+// types, or structs, for exmaple. you can even include another enum! also with STL types are often
+// not much more complicated than what you might come up with.
+//
+// not that even though the STL contains a definition for IpAddr, we can still create and use our
+// own definition without confliect because we havent brought the STL definition into our scope. 
+//
+// lets look at another example of enum, this has wide varity of types embedded in its variants.
+//
+// enum Message {
+//      Quit,
+//      Move {x: i32, y: i32},
+//      Write(String),
+//      ChangeColor(i32, i32, i32),
+// }
+//
+// this enum has four variants with different types:
+// Quit - has no data associated with it at all
+// Move - has named fields like a struct does 
+// Write - includes a single String 
+// ChangeColor - includes three i32 values
+//
+// defining an enum with variants like we have above is similar to defining deifferent kinds of
+// struct definitions, except the enum doesnt use the struct keyword and all the variant are
+// grouped together under the Message type. The following structs could hold the same data that the
+// preceding enum variants hold:
+//
+// struct QuiteMessage; // unit struct 
+// struct MoveMessage {
+//      x: i32,
+//      y: i32,
+// }
+// struct WriteMessage(String); // tuple struct
+// struct ChangeColorMessage(i32, i32, i32); // tuple struct 
+//
+// but if we used the different structs, each of which has its own type, we couldnt easily define a
+// function to take any of these kinds of messages as we could with the Message enum defined.
+//
+// there is no more similarity between enums and structs: just as were able to define methods on
+// structs using impl, were also able to define methods on enums. heres a method named call that we
+// could define on our Message enum:
+//
+// impl Message {
+//      fn call(&self) {
+//          // method body would be defined here
+//      }
+// }
+//
+// let m = Message::Write(String::from("hello"));
+// m.call();
+//
+// the body of the method would use self to get the value that we called the method on. in this
+// example, weve created a variable m that has the value Message::Write(String::from("hello")), and
+// that is what self will be in the body of the call method when m.call() runs.
+//
+//
+// THE OPTION ENUM AND ITS ADVANTAGES OVER NULL VALUES 
+//
+// this section explores a case study of Option, which is another enum defined by the standard
+// library. The Option type encodes the very common scenario in which a value could be something or
+// it could be nothing.
+//
+// for example, if you request the first item in a non empty list, you would get a value. if you
+// request the first item in an empty you would get nothing.expressing this concept in terms of the
+// type system means the compiler can check whetehr youve handled all the cases you should be
+// handling; this functionality can prevent bugs that are extremely common in other programming
+// languages. 
+//
+// Rust doesnt have the null feature that others do. Null is a value that means there is no value
+// there, in languages with null, variables can always be in one of two states, null or non null.
+//
+// the problem with null values si that if you try to use a null value as a not null value, youll
+// get an error of some kind. because this null or not null propert is pervasive, its extremely
+// easy to make this kind of error.
+//
+// however, the concept that null is trying to express is still a sueful one, a null is a value
+// that is currently invalid or absent for some reason
+//
+// the prolem isnt really with the concept but with the particular implementation. as such, Rust
+// DOES NOT HAVE NULLS, but it does have an enum that can encode the concept of a value being
+// present or absent. This enum is Option<T>, defined as follows:
+//
+// enum Option<T> {
+//      None,
+//      Some(T),
+// }
+//
+// the Option<T> enum is so useful that its even included in the prelude; you dont need to bring it
+// into scope explicily. its variants are also included in teh prelude: you can use Some and None
+// directly without the Option:: prefix. the Option<T> enum is still just a regular enum, and
+// Some(T) and None are still variants of type Option<T>.
+//
+// the <T> syntax is a feature of Rust we havent talked about, its a generic type parameter. For
+// now, what you need to know is that <T> means that Some variant of the Option enum can hold one
+// piece of data of any type, and that each concrete type that gets used in place of T makes the
+// overall Option<T> type a different type. here are some examples of using Option values to hold
+// number types and char types:
+//
+// let some_number=  Some(5);
+// let some_char = Some('e');
+// let absent_number: Option<i32> = None;
+//
+// the type of some_number is Option<i32>. the type of some_char is Option<char>, which is a
+// different type. Rust can infer these types because weve specified a value inside the Some
+// variant. For absent_number, Rust requires us to annotate the overall Option type: the compiler
+// cant infer the type that corresponding Some variant will hold by looking only at a None value.
+// Here, we tell Rust we mean for absent_number to be of type Option<i32>.
+//
+// when we have Some value, we know that a value is present and the value is held within the Some.
+// When we have a None value, in some sens eit means the same thing as null: we dont have a valid
+// value. So why having Option<T> any better than having null?
+//
+// in short, because Option<T> and T, where T can be any type, are different types, the compiler
+// wont let us use an Option<T> value as if it were definitely a valid value. for example, this
+// code wont compile because its trying to add an i8 to an Option<i8>:
+//
+// let x: i8 = 5;
+// let y: Option<i8> = Some(5);
+// leet sum = x + y;
+//
+// you get an error! intense!
+//
+// this error message means that Rust does not understand how to add an i8 and an Option<i8>
+// because they are different types. the compiler ensures that we always have a valid value so we
+// can confidently proceed without having the possibility of the value being of type null or None.
+//
+// in order words, you have to convert an Option<T> to a T before you can perform T operations
+// with it. generally, this helps catch one of the most common issues with null: assuming that
+// something isnt null when it actually is.
+//
+// eliminating the risk of incorrectly assuming a not null value helps you to be more confident in
+// your code. in order to have a value that can possily be null, you must explicitly opt in by
+// making the type of that value Option<T>. then, when you use that value, you are required to
+// explicitly handle the case when the value is null. everywhere thata  value has a type that isnt
+// an Option<T>, you can safely assume that the value isnt null. this was deliberate design
+// decision for Rust to limit null's pervasiveness and increase the safety of Rust code.
+//
+// So how do you get the T value out of Some variant when you have  avalue of type Option<T> so
+// that you can use that value? the Option<T> enum has a larger number of methods that are useful
+// in a variety of situations;
+//
+// in general, in order to use an Option<T> value, you want to have code that will handle each
+// variant. You want some code that will run only when you have Some(T) value, and this code is
+// allowed to use the inner T. you want some other ocde to run only if you have a None value, and
+// that code doesnt have a T value avilable. The match expression is a control flow construct that
+// does just this when used with enums: it will run different code depending on which variant of
+// the enum it has, and that code can use the data inside of the matching value.
