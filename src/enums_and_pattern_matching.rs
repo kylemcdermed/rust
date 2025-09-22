@@ -49,3 +49,16 @@
 //
 // using enums has even more advantages. Thinking more about our IP address type, at the moment we
 // dont have a way to store the actual IP address data; we only know what kind it is...
+//
+// here we defined a struct IpAddr that has two fields: a kind field that is of type IpAddrKind and
+// an address field of type String. We have two instances of this struct. The first is home, and it
+// has the value IpAddrKind::V4 as its kind with associated address of 127.0.0.1 and the second
+// instance is loopback. It has the other variant of IpAddrKind as its kind value, V6, and has
+// address ::1 associated with it. Weve used a struct to bundle the kind and address values
+// together, so now the variant is associated with the value.
+//
+// However, representing the same concept using just an enum is more concise: rather than an enum
+// inside a struct, we can put data directly into each enum variant. This new definition of the
+// IpAddr enum says that both V$ and V6 variants will have an associated String values:
+//
+//
