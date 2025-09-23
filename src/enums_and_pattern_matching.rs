@@ -346,6 +346,24 @@
 // theres one other aspect of match we need to discuss: the arms pattern must cover all
 // possibilities. consider this version of our plus_one function, which has a bug and wont compile:
 //
+// Rust knows that we didnt cover every possible case, and even knows which pattern we forgot!
+// Matches in Rust are exhaustive: we must exhaust every last possibility in order for the code to
+// be valid. especially in the case of Option<T>, when Rust prevents us from forgetting to
+// explicitly handle the None case, it protects us from assuming that we have a valud when we might
+// have null, ths making the billion dollar mistake discussed earlier impossible.
+//
+//
+//
+// CATCH ALL PATTERNS AND THE _ PLACEHOLDER
+//
+// using enums we can also take special actions for a few particular values, but for all other
+// values take one default action, imagine were implementing a game where, if you roll a 3 on a
+// dice roll, your player doesnt move, but instead gets a new fancy hat. if you roll a 7, your
+// player loses a fancy hat. for all other values, your player moves that number of spaces on the
+// game board. heres a match that implements that logic, with the result of the dice roll hardcoded
+// rather than a random value, and all other logic represented by functions without bodies because
+// actually implementing them is out of scope for this example:
+//
 //
 //
 //
