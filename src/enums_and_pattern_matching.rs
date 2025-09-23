@@ -318,6 +318,36 @@
 //
 // this function is very easy to write thanks to match
 //
+// lets examine the first execution of plus_one in more detail. when we call plus_one(five), the
+// variable x in the body of plus_one will have the value Some(5). the variable x in the body of
+// plus_one will have the value Some(5). we then compare that against each match arm: None => None,
+//
+// the Some(5) value doesnt match the pattern None, so we continue to the next arm: Some(5) =>
+// Some(i+1),
+//
+// does some(5) match Some(i)? it does! we have the same variant, the i binds to the value containe
+// in Some, so i takes the value 5. the code in the match arm is then executed, so we add 1 to the
+// value of i and create Some value with our total 6 inside.
+//
+// Now lets consider the second call of plus_one where x is None. we enter the match and compre to
+// the first arm: None => None,
+//
+// it matches! theres no value to add to, so the program stops and returns the None value on the
+// right side of =>, nbecause the first arm is matched, no other arms are compared.
+//
+// combining match and enum is usefil in many situations. youll see this pattern alot in Rust code:
+// match against an enum, bind a variable to the data inside, and then execute code basedd on it.
+// its a bit tricky at first, but once you get used to it, youll wish you had it in all languages.
+// its consistnently a user favorite
+//
+//
+// MATCHES ARE EXHUASTIVE 
+//
+// theres one other aspect of match we need to discuss: the arms pattern must cover all
+// possibilities. consider this version of our plus_one function, which has a bug and wont compile:
+//
+//
+//
 //
 //
 //
