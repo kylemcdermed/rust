@@ -364,6 +364,25 @@
 // rather than a random value, and all other logic represented by functions without bodies because
 // actually implementing them is out of scope for this example:
 //
+// for the firs two arms, the pattern are the literal values 3 and 7. for the last arm that covers
+// every other possible value, the pattern is the variable weve chosen to name other. the code that
+// runs for the other arm uses the variable by passing it to the move_player function.
+//
+// this code compiles, even though we havent listed all possible values a u8 can have, because the
+// last pattern will match all values not specifically listed. this catch all pattern meets the
+// requirement that match must be exhaustive. note that we have to put the catch all arm last
+// because the patterns are evaluated in order. if we put the catch all arm earlier, the other arms
+// would never run, sp Rust will warn us if we add arms after a catch all!
+//
+// Rust also has a pattern we can use when we want a catch all but dont want to use the value in
+// the catch all pattern: `_` is a special pattern that matches any value and does not bind to that
+// value. this tells Rust we arent going to use the value. so Rust wont warn up about an unused
+// variable.
+//
+// lets change the rules of the game now, if you roll anything other than a 3 or 7, you must roll
+// again, we no longer need to use a catch all value so we can change our code to use _ instead of
+// the variable named other:
+//
 //
 //
 //
