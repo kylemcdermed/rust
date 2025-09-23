@@ -234,3 +234,23 @@
 // that code doesnt have a T value avilable. The match expression is a control flow construct that
 // does just this when used with enums: it will run different code depending on which variant of
 // the enum it has, and that code can use the data inside of the matching value.
+//
+//
+// THE MATCH CONTROL FLOW CONSTRUCT 
+//
+// Rust has na extremely powerful control flow construct called match that allows you to compare a
+// value against a series of patterns and then execute code based on which pattern matches.
+// patterns can be made up of literal values, variable names, wildcards, and other things; the
+// power of match comes from the expressiveness of the patterns and the fact that the compiler
+// confirms that all possible cases are handled.
+//
+// think of a match expression as being like a coin sorting machine: coins slide down a track with
+// variously sized holes along the way, and each coin falls through the first hole it encounters
+// that it fits into. in the same way, values go through each pattern in a match, and at the first
+// pattern the value fits, the value falls into the associated code block to be used during
+// execution
+//
+// lets use this coin expression as an example using match. writing a function that takes an
+// unknown us coin and determines which coin it is and returns the value in cents
+//
+//
