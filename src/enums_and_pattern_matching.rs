@@ -298,7 +298,25 @@
 // values of the variant Coin::Quarter. when a Coin::Quart matches, the state variable will bind to
 // the value of that quarters state. then we can use state in the code for that arm like so:
 //
+// if we were to call value_in_cents(Coin::Quarter(UsState::Alaska)), coin would be
+// Coin::Quarter(UsState::Alaska). when we compare value with each of the match arms, none of them
+// match until we each Coin::Quarter(state). at that point the binding for state will be the value
+// UsState::Alaska. we can then use that binding in the println! expresion, thus getting the inner
+// state value out of the Coin enum variant for Quarter
 //
+//
+// MATCHING WITH OPTION<T>
+//
+// in the previous section we wanted to get the inner T value out of the Some case when using
+// Option<T>; we can also handle Option<T> using match, as we did with the Coin enum! instead of
+// comparing coins, well compare the variants of Option<T>, but the way the match expression works
+// remains the same.
+//
+// lets say we want to write a function that takes an Option<i32> and, if theres a value inside,
+// adds 1 to the value. if there isnt a value inside, the function should return None value and not
+// attempt to perform any operations
+//
+// this function is very easy to write thanks to match
 //
 //
 //
