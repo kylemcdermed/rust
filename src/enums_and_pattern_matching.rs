@@ -277,6 +277,18 @@
 // then optional. for example, the following code prints "lucky penny" everytime the method is
 // called with a Coin::Penny, but still returns the last value of the block, 1:
 //
+// 
+//
+// PATTERNS THAT BIND TO VALUES 
+//
+// another useful feature of match arms is that they can bind to the parts ot eh values that match
+// the pattern. this is how we can extract out enum variants.
+//
+// so for example, lets change one of our enum variants to hold data inside of it from 1999 to
+// 2008, the usa minted quarters with different designs for each of the 50 states on one side. no
+// other coins got state designs, so only quarters have this extra value. we can add this
+// information to our enum by changing the Quarter variant to include  UsState value stored inside
+// it
 //
 //
 //
