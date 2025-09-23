@@ -253,4 +253,35 @@
 // lets use this coin expression as an example using match. writing a function that takes an
 // unknown us coin and determines which coin it is and returns the value in cents
 //
+// lets break down the match in value_in_cents function. first we list the match keyword followed
+// by an expression, which in this case is the value coin. this is like an if statement but a big
+// different with if statement is the condition needs to evaluate to a Boolean value, but here it
+// can be any type. The type of coin in this example is the Coin enum that we defined on the first
+// line 
+//
+// next are the match arms. an arm has two parts: a pattern and some code. the first arm here has a
+// pattern that is the value of Coin::Penny and then the => operator that separates the pattern and
+// the code to run. the code in this case is just the value 1. each arm is separated from the next
+// with a comma.
+//
+// when the match expression executes, it compares the resultant value against the pattern of each
+// arm, in order. if a pattern matches the value, the code associated with that pattern is
+// executed. if that pattern doesnt match the value, execution continues to the next arm, much as
+// in a coin sort machine. we can have as many arms as we need.
+//
+// the code associated with each arm is an expression, and the resultant value of the expression in
+// the matching arm is the value that gets returned for the entire match expression
+//
+// we typically dont use curly brackets if the match arm code is short, if you want to run multiple
+// lines of code in a match arm, you must use curly brackets, and the comma following the arm is
+// then optional. for example, the following code prints "lucky penny" everytime the method is
+// called with a Coin::Penny, but still returns the last value of the block, 1:
+//
+//
+//
+//
+//
+//
+//
+//
 //
