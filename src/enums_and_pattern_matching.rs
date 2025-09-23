@@ -390,6 +390,9 @@
 // turn if you roll anything other than a 3 or a 7. we cna epxress that by using the unit value
 // (the empty tuple type we mentioned in The Tuple type section) as code that goes with the _ arm:
 //
+// Here were telling rust explicitly that we arent going to use any other value that doesnt match
+// the pattern in an earlier arm, and we dont want to run any code in this case.
+//
 //
 //
 //
