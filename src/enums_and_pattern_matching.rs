@@ -383,6 +383,13 @@
 // again, we no longer need to use a catch all value so we can change our code to use _ instead of
 // the variable named other:
 //
+// this exmaple also meets the exhaustiveness requirement because were explicitly ignoring all
+// other values in the last arm; we havent forgotten anything.
+//
+// finally well change the rules of the game on emore time so that nothing else happens on your
+// turn if you roll anything other than a 3 or a 7. we cna epxress that by using the unit value
+// (the empty tuple type we mentioned in The Tuple type section) as code that goes with the _ arm:
+//
 //
 //
 //
