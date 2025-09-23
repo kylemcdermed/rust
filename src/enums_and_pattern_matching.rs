@@ -290,6 +290,14 @@
 // information to our enum by changing the Quarter variant to include  UsState value stored inside
 // it
 //
+// lets imagine someone is collecting all 50 quarters. while we sort our loose change by coin type,
+// well also call out the name of the state associated with each quarter so that if one of our
+// friend doesnt have they can add it to their collection
+//
+// in the match expression for this code, we add variable called state to the pattern that matches
+// values of the variant Coin::Quarter. when a Coin::Quart matches, the state variable will bind to
+// the value of that quarters state. then we can use state in the code for that arm like so:
+//
 //
 //
 //
