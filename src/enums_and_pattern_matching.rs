@@ -429,7 +429,7 @@
 // UsState value. if we wanted to count all non quarter coins we see while also announcing the
 // state of the quarters, we could do that with a match expression
 //
-//
+// or we could use an if let and else expression 
 //
 //
 //
