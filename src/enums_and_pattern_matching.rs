@@ -443,5 +443,10 @@
 // then we might use if let to match on the type of coin, introducing a state variable ithin the
 // body of the condition
 //
+// that gets the job done, but it has pushed the work into the body of the if let statement and if
+// the work to be done is more complicated, it might be hard to follow exactly how the top level
+// branches relate. we could also take advantage of the fact that expression produce a value to
+// either the state from the if let or to the return early
+//
 //
 //
