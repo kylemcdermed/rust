@@ -440,5 +440,8 @@
 // say something funny depending on how old the state on the quarter was we might introduce a
 // method on UsState to check the age of a state like so:
 //
+// then we might use if let to match on the type of coin, introducing a state variable ithin the
+// body of the condition
+//
 //
 //
