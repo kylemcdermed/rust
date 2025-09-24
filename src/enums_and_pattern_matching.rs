@@ -394,6 +394,14 @@
 // the pattern in an earlier arm, and we dont want to run any code in this case.
 //
 //
+// 
+// CONCISE CONTROL FLOW WITH IF LET AND LET ELSE 
+//
+// the if let syntax lets you combine if and let into a less verbose way to handle values that
+// match one pattern while ignoring the rest. consider the program that matches on an Option<u8>
+// value in the config_max variable but only wants to execute code if the value is the Some
+// variant.
+//
 //
 //
 //
