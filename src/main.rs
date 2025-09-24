@@ -32,4 +32,14 @@ if let Coin::Quarter(state) = coin {
     count += 1
 }
 
+impl UsState {
+    fn existed_in(&self, year: u16) -> bool {
+        match self {
+            UsState::Alabama => year >= 1819,
+            UsState::Alaska => year >= 1959,
+            // --snip--
+        }
+    }
+}
+
 

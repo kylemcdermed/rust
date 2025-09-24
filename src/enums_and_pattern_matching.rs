@@ -432,5 +432,13 @@
 // or we could use an if let and else expression 
 //
 //
+// 
+// STAYING ON THE HAPPY PATH WITH LET...ELSE
+//
+// the common pattern is to perform some computation when a value is present and return a default
+// value otherwise. continuing on with our example of coins with a UsState value, if we wanted to
+// say something funny depending on how old the state on the quarter was we might introduce a
+// method on UsState to check the age of a state like so:
+//
 //
 //
