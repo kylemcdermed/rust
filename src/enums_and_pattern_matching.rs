@@ -409,6 +409,25 @@
 //
 // instead we could write this in a short way using if let. the code behaves the same as the match
 //
+// the syntax if let takes a pattern and an expression separated by an equal sign. it works the
+// same way as a match where the expression is given to the match and the pattern is its first arm.
+// in this case, the pattern is Some(max) and the max binds to the value inside the some. we can
+// use max in th body of the if let block in the same way we used max in the corresponding match
+// arm. the code in the if let block only runs if the value matches the pattern.
+//
+// using if let means less typing, less indentation, and less boilerplate code. however you lose
+// the exhaustive checking match enforces that ensures you arent foregetting to handle any cases.
+// choosing between match and if let depends on what your doing in your particular situaion and
+// whether gaining conciseness is an appropriate trade off for losing exhaustive checking 
+//
+// in other words you can think of if let as syntax sugar for a match that runs code when the value
+// matchres one pattern and then ignores all other values 
+//
+// we cna include an else with an if let. the block of code that goes with the else is the same as
+// the block of code that would go with the _ case in the match expression that is equivalent to
+// the if let and else. recall the Coin enum definition where the quarter variant also held a
+// UsState value. if we wanted to count all non quarter coins we see while also announcing the
+// state of the quarters, we could do that with a match expression
 //
 //
 //
