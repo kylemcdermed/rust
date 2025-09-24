@@ -448,5 +448,14 @@
 // branches relate. we could also take advantage of the fact that expression produce a value to
 // either the state from the if let or to the return early
 //
+// this is a bit annoying to follow in its own way though, one branch of the if lete produces a
+// value, and the other returns from the function entirely
 //
+// to make this common pattern nicer to express, Rust has let...else. The let...else syntax takes a
+// pattern on the left side and an expression on the right very similar to if let, but it does not
+// have an if branch, only an else branch. if the pattern matches, it will bind the value from the
+// pattern in the outer scope. if the pattern does not match, the progra, will flow into the else
+// arm, which must return from the function
+//
+// 
 //
