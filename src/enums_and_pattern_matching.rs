@@ -402,6 +402,13 @@
 // value in the config_max variable but only wants to execute code if the value is the Some
 // variant.
 //
+// if the value is Some, we print out the value in the Some variant by binding the value to the
+// variable max in the pattern. We dont want to do anything with the None value. to satisfy the
+// matchc expression we have to add _ => () after processing just one variant, which is annoying
+// boilerplate code to add
+//
+// instead we could write this in a short way using if let. the code behaves the same as the match
+//
 //
 //
 //
