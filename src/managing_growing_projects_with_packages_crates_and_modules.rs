@@ -62,3 +62,45 @@
 // by placing files in the src/bin directory: each file will be a separate binary crate.
 //
 //
+// DEFINING MODULES TO CONTROL SCOPE AND PRIVACY
+//
+// well talk about modules and other parts of the modules system, namely paths, which allow you to
+// name items; the use keyword that brings a path into scope; and the pub keyword to make items
+// public. well also discuss as keyword, external packages, and the glob operator
+//
+//
+// MODULES CHEAT SHEET 
+//
+// here is a cheat sheet on how modules, paths, the use keyword, the pub keyword work in the
+// compiler, and how most devs organize their code. 
+//
+// -- start from the crate root: when compiling a crate, the compiler first looks in the crate root
+// file (usually src/lib.rs for a library crate or src/main.rs for a binary crate) for code to
+// compile
+//
+// -- declaring modules: in the crate root file you can declare new modules; say you declare a
+// 'garden' module with mod garden; the compuler will look for modules code in these places:
+// 1. inline, within curly brackets that replace the semicolon following mod garden
+// 2. in the file src/garden.rs
+// 3. in the file src/garden/mod.rs
+//
+// -- declaring submodules: in any file other than the crate root, you can declare submodules. for
+// exmaple you might declare mod vegetables; in src/garden.rs. the compiler will look for the
+// submodules code within the directory named for the parent modules in these places:
+// 1. inline, directly following mod vegetables, within curly brackets instead of the semi colon
+// 2. in the file src/garden/vegetables.rs
+// 3. in the file src/garden/vegetables/mod.rs
+//
+// -- paths to code in modules: once a module is part of your crate, you can refer to code in that
+// module from anywhere else in that same crate, as long as the privacy rules allow, using the path
+// to the code. for exmaple, an asparagus type in the garden vegetables modules would be found at
+// crate::garden::vegetables::asparagus
+//
+// -- private vs public: code within a module is private from its parent modules by default. to
+// make a module public, declare it with pub mod instead of mod. to make items within a public
+// modules public as well, use pub before their declarations
+//
+// -- the use keyword: within a scope, the use keyword creates shortcuts to items to reduce
+// repitition of long paths. in any scope that can refer to crate::garden::vegetable::asparagus,
+// you can create a shortcut with use crate::garden::vegetables::asparagus; and from then on you
+// only need to write asparagus to make use of that type in the scope 
