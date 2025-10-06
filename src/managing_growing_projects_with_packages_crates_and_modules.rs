@@ -46,4 +46,14 @@
 // a package can contain as many binary crates as you like, but at most only one library crate. a
 // package must contain at least one crate, which thats a library or a binary crate.
 //
+// after we create cargo new my-project and after we run cargo new my-project, we use ls to see
+// what cargo creates. in the project directory, a Cargo.toml file giving us a package. theres also
+// a src directory that contains main.rs. open Cargo.toml in your text editor, and note theres no
+// mention of src/main.rs. Cargo follows a convention that src/main.rs is the crate root of a
+// binary crate with the same name as the package.
+//
+// likewise, cargo knows that if the package directory contains src/lib.rs, the package contains a
+// library crate with the same name as the package, and src/lib.rs is its crate root. cargo passes
+// the crate root files to rustc to build the library or binary
+//
 //
