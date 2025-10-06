@@ -56,4 +56,9 @@
 // library crate with the same name as the package, and src/lib.rs is its crate root. cargo passes
 // the crate root files to rustc to build the library or binary
 //
+// here we have a package that only contains src/main.rs meaning it only contains a binary crate
+// named my-project. if a package contains src/main.rs and src/lib.rs it has two crate: a binary
+// and a library, both with the same name as the package. a package can have multiple binary crates
+// by placing files in the src/bin directory: each file will be a separate binary crate.
+//
 //
