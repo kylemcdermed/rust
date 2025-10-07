@@ -135,5 +135,41 @@
 // lets organzie our functions into nested modules, create a new library names restaurant by
 // running cargo new restaurant --lib. then enter the code for the front of house section...
 //
+// we define a module with the mod keyword followed by the name of the module (front_of_house). the
+// body of the module goes inside curly brackets. inside modules, we can place other modules, as in
+// this case with the modules hosting and serving. modules can also hold definitions for other
+// items such as structs, enums, constants, traits,..
+//
+// by using modules, we can group related definitions together and name why theyre related.
+// programmers using this code can navigate the code based on the groups rather than having to read
+// through all the definitions, making it easier to find the definitions relevant to them.
+// programmers adding new functionality to this code would know where the place the code to keep
+// the program organized.
+//
+// earlier, we mentioned that src/main.rs and src/lib.rs are called crate roots. the reason for
+// their name is that the contents of either of these two files form a modules named create at the
+// root of the crates modules structure known as the modules tree
+//
+// this tree
+//
+// crate
+//      { front_of_house
+//                      { hosting
+//                              { add_to_waitlist
+//                              { seat_at_table
+//                      { serving
+//                              { take_order
+//                              { serve_order
+//                              { take_payment
+//
+//  shows how some of the modules nest inside other modules; for exmaple, hosting nests inside
+//  front_of_house. the tree also shows that some modules are siblings meaning theyre defined in
+//  the same module; hosting and serving are siblings defined within front_of_house. if modules A
+//  is contained inside module B, we say that module A is the child of modules B and that modules B
+//  is the parent of module A. notice that the entire module tree is rooted under the implicit
+//  modules named crate...
+//
+//  the module tree might remind you of the filesystems directory tree on your computer
+//
 //
 //
