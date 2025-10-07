@@ -172,4 +172,33 @@
 //  the module tree might remind you of the filesystems directory tree on your computer
 //
 //
+// PATHS FOR REFERRING TO AN ITEM IN THE MODULE TREE
+//
+// to show Rust where to find an item in a module tree, we use a path in the same way we use a path
+// when navigating a filesystem. to call a function we need to know its path
+//
+// a path can take two forms:
+// 
+// -- an absolute path: is the full path string from a crate root; for code from an external crate,
+// the absolute path begins with the crate name, and for code from the current crate, it starts
+// with the literal crate.
+//
+// -- a relative path: starts from the current modules and uses self, super, or an identifier in
+// the current modules
+//
+// both absolute and relative paths are followed by one or more identifiers separated by double
+// colons (::)
+//
+// returning to the code, say we want to call the add_to_waitlist function, this is the same as
+// asking: whats the path of the add_to_waitlist function? with some of the modules and functions
+// removed.
+//
+// well show two ways to call the add_to_waitlist function from a new function, eat_at_restaurant,
+// defined in the crate root. these paths are correct, but theres another problem remaining that
+// will prevent this example from compiling as is. 
+//
+// the eat_at_restaurant function is part of our librarys public API, so we mark it with th epub
+// keyword
+//
+// 
 //
