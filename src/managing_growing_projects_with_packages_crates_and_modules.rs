@@ -103,4 +103,6 @@
 // -- the use keyword: within a scope, the use keyword creates shortcuts to items to reduce
 // repitition of long paths. in any scope that can refer to crate::garden::vegetable::asparagus,
 // you can create a shortcut with use crate::garden::vegetables::asparagus; and from then on you
-// only need to write asparagus to make use of that type in the scope 
+// only need to write asparagus to make use of that type in the scope
+//
+// the crate root file in this case is src/main.rs and it contains 
