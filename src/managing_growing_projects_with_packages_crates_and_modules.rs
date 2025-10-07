@@ -105,4 +105,35 @@
 // you can create a shortcut with use crate::garden::vegetables::asparagus; and from then on you
 // only need to write asparagus to make use of that type in the scope
 //
-// the crate root file in this case is src/main.rs and it contains 
+// the crate root file in this case is src/main.rs and it contains some code inside of it and the
+// pub mod garden; line tells the compiler to include the code it finds in src/garden.rs, which is 
+// pub mod vegetables;
+//
+// here pub mod vegetables; means the code in src/garden/vegetables.rs is included too, that code
+// is:
+//
+// #[derive(Debug)]
+// pub struct Asparagus {}
+//
+//
+// GROUPING RELATED CODE IN MODULES 
+//
+// modules let us organize code within a crate for readability and easy reuse. modules also allow
+// us to control the privacy of items because code within a modules is private by default. private
+// items are internal implementation details not available for outside use. we can choose to make
+// modules and the items within them public, which exposes them to external code to use and depends
+// on them.
+//
+// lets write some library crate that provides functionality of a restuarant.
+//
+// in the restuarant industry, some parts of a resutatant are referred to as front of house and
+// others as back of house. front of house is where the customers are; this encompasses where the
+// hosts seat customers, servers take orders and payment, and bartenders make drinks. back of house
+// is where the chefs and cooks work in the kitchen, dishwashers clean up and managers do
+// administrative work.
+//
+// lets organzie our functions into nested modules, create a new library names restaurant by
+// running cargo new restaurant --lib. then enter the code for the front of house section...
+//
+//
+//
